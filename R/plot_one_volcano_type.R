@@ -1,13 +1,13 @@
 
-## comments for testing
-# volcano <- readRDS(here::here("data", "volcanoes.rds"))
-# 
-# volcano %>% glimpse
-# 
-# library(tidyverse)
+# comments for testing
+volcano <- readRDS(here::here("data", "volcanoes.rds"))
 
+volcano %>% glimpse
 
-plot_one_volcano_type <- function(volcano_type_df){
+#library(tidyverse)
+
+# visualize one type of volcano with a subplot
+plot_one_volcano_type <- function(volcano_type_df, volcano = volcano){
   
   chosen_type <- volcano_type_df$volcano_type_consolidated
   
@@ -26,4 +26,4 @@ plot_one_volcano_type <- function(volcano_type_df){
 
 
 
-# plot_one_volcano_type(volcano_type_df = data.frame(volcano_type_consolidated = "Cone"))
+plot_one_volcano_type(volcano_type_df = data.frame(volcano_type_consolidated = "Cone"))

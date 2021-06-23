@@ -12,11 +12,12 @@ library(shinyWidgets)
 library(leaflet)
 library(dplyr)
 library(ggplot2)
+library(emojifont)
 
 
 # make dashboard header
 header <- dashboardHeader(
-    title = "Exploring Volcanoes of the World",
+    title = paste0("Exploring volcano explosivity", emojifont::emoji("volcano")),
     titleWidth = 350 # since we have a long title, we need to extend width element in pixels
 )
 
@@ -40,8 +41,8 @@ body <- dashboardBody(
                    checkboxGroupButtons(
                        inputId = "volcano_type",
                        label = "Volcano Type",
-                       choices = c("Stratovolcano" , "Shield" ,"Cone" ,   "Caldera" ,    "Volcanic Field",
-                                   "Complex" , "Other",   "Lava Dome"  , "Submarine"    ),
+                       choices = c("Stratovolcano", "Shield","Cone","Caldera","Volcanic Field",
+                                   "Complex", "Other", "Lava Dome","Submarine"),
                        checkIcon = list(
                            yes = tags$i(class = "fa fa-check-square", 
                                         style = "color: steelblue"),
@@ -49,12 +50,13 @@ body <- dashboardBody(
                                        style = "color: steelblue"))
                    ), # end checkboxGroupButtons
                    
-                   
+                   sliderInput(inputId = "elevation",
+                               label = "elevation_meters",
+                               min = -2500, max = 7000,
+                               value = c(0, 4000)),
                    br(),
                    
-                   strong("Space for your addition here:"),
-                   
-                   br(), br(), br(), br(), br(), br(), # add a bunch of line breaks to leave space. these can be removed
+                   paste0(emojifont::emoji("rocket"))
                    
                    # space for your addition here:
                    #-------------------------------------------
